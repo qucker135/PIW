@@ -1,3 +1,3 @@
 # PIW
 
-Lista zadań na labaratoria z przedmiotu Projektowanie Interfejsów Webowych
+Lista zadań na laboratoria z przedmiotu Projektowanie Interfejsów Webowych
