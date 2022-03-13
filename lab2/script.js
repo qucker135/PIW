@@ -1,11 +1,20 @@
 'use strict'
 
+let trash = ""; 
+
+function usunElement(){
+	console.log(this + "usunelement");
+	console.log(this.parentNode);
+	trash = this.parentNode.cloneNode(true);
+	this.parentNode.remove();
+}
+
 function dodajZadanie(){
 	let taskContent = document.getElementById("zadanie").value;
 	if(taskContent!==""){
 		let newElement = document.createElement("div");
 		newElement.innerHTML = taskContent + '<div class="date" style="display: none;">'+2022+'</div>';
-		newElement.innerHTML = newElement.innerHTML + '<button onclick="parentNode.remove();">x</button>'
+		newElement.innerHTML = newElement.innerHTML + '<button onclick="trash = parentNode.cloneNode(true); parentNode.remove();">x</button>'
 		newElement.onclick = () => {
 			newElement.classList.toggle("greyed");
 			for (let i = 0; i < newElement.children.length; i++) {
@@ -31,7 +40,9 @@ function dodajZadanie(){
 	}
 }
 
-function usunElement(){
-	console.log(this + "usunelement");
-	this.parentNode.remove();
+const przywroc = function(){
+	if(trash!==""){
+		document.getElementById("list1").appendChild(trash);
+		//trash = "";
+	}
 }
