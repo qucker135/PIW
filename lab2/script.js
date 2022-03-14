@@ -2,9 +2,10 @@
 
 //let trash = ""; 
 let $trash = "";
-let $copiedElement = $("");
+let trashListNr = 0;
+//let $copiedElement = $("");
 
-let numberOfElements = 0; //TO DELETE???
+let uniqueId = 0; 
 
 /*unused*/
 function usunElement(){
@@ -14,12 +15,28 @@ function usunElement(){
 	this.parentNode.remove();
 }
 
+let headers = document.getElementsByClassName('header');
+Array.prototype.forEach.call(headers, function(header){
+	console.log(header);
+	header.onclick = () => {
+		console.log(header.tagName);
+	}	
+});
+/*
+	headers.item(i).onclick = () => {
+		console.log(this);	
+	}
+	console.log(i);
+	console.log("babababa");
+	*/
+
+
+
 function dodajZadanie(){
 	let taskContent = document.getElementById("zadanie").value;
 	if(taskContent!==""){
 		let divNewPosition = document.createElement("div");
-		divNewPosition.id = "position1-"+numberOfElements;
-		divNewPosition.classList.add("position");
+		divNewPosition.id = "position-"+uniqueId;
 		
 		let divContent = document.createElement("div");
 		divContent.innerHTML = taskContent;
@@ -53,7 +70,7 @@ function dodajZadanie(){
 			}
 		}
 
-		let nr = numberOfElements;	
+		let nr = uniqueId;	
 
 		$(divNewPosition).append(
 			$('<button>', {
@@ -61,32 +78,47 @@ function dodajZadanie(){
 				//te dwie linijki w jquery!!!
 				//nie kopiują się listenery!!!
 				//trash = divNewPosition.cloneNode(true);
-				//let $copiedElement = $('#position1-'+nr).clone(true);
+				//let $copiedElement = $('#position-'+nr).clone(true);
 				$("#modal").css('display', 'block');
 				//TAK
 				$("#modal").children().eq(1).off("click").click(()=>{
-					$trash = $('#position1-'+nr).clone(true);
+					trashListNr = Number(document.getElementById('position-'+nr).parentElement.id.slice(-1));
+					
+					//console.log(document.getElementById('position'+nr).parentElement);
+					//console.log(document.getElementById('position'+nr).parentElement.id);
+					$trash = $('#position-'+nr).clone(true);
+					//console.log( $('#position-'+nr));
+					//console.log( $('#position-'+nr).parent());
+					//console.log( $('#position-'+nr).parent().get(0).id);
+					//$trash = $(divNewPosition).clone(true);
+
+							
+
 					//divNewPosition.remove();
-					$('#position1-'+nr).remove();
+					$('#position-'+nr).remove();
+					//$(divNewPosition).remove();
 					$("#modal").css('display', 'none');
 				});
 				$("#modal").children().eq(2).off("click").click(()=>{
-					//$trash = $('#position1-'+nr).clone(true);
+					//$trash = $('#position-'+nr).clone(true);
 					//divNewPosition.remove();
-					//$('#position1-'+nr).remove();
+					//$('#position-'+nr).remove();
 					$("#modal").css('display', 'none');
 				});
 
 
-				//$trash = $('#position1-'+nr).clone(true);
+				//$trash = $('#position-'+nr).clone(true);
 				//divNewPosition.remove();
-				//$('#position1-'+nr).remove();
+				//$('#position-'+nr).remove();
 			})
 		);
 
-		
-		document.getElementById('list1').appendChild(divNewPosition);	
-		numberOfElements++;
+	
+		let select = document.getElementById('whichList');			
+		let nrOfListSelected = select.options[select.selectedIndex].value;
+
+		document.getElementById('list'+nrOfListSelected).appendChild(divNewPosition);	
+		uniqueId++;
 	}
 }
 
@@ -98,7 +130,7 @@ const przywroc = function(){
 		//$copy.click(()=>{
 			
 		//});
-		$('#list1').append($copy);
+		$('#list'+trashListNr).append($copy);
 		$copy.children().eq(0).addClass('nongreyed');
 		$copy.children().eq(0).removeClass('greyed');
 		//$copy.children().eq(1).addClass('nonvisible');

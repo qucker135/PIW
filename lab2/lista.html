@@ -8,6 +8,21 @@
     </head>
     <body>
     	<!--<form>-->
+            <label for="whichList">Wybierz listę:</label>
+	    <!--<input name="whichList" list="whichList">-->
+            <select name="whichList" id="whichList">
+              <option value="1">Na przedwczoraj</option>
+              <option value="2">Na wczoraj</option>
+              <option value="3">Na dzisiaj</option>
+            </select>	
+            <!--
+            <datalist id="whichList">
+              <option value="Na przedwczoraj">
+              <option value="Na wczoraj">
+              <option value="Na dzisiaj">
+            </datalist>
+            -->
+
             <label for="zadanie">Wpisz zadanie:</label>
             <input type="text" name="zadanie" id="zadanie" required />
 	    <!--<input type="submit" value="Zatwierdź" onclick="dodajZadanie()"/>-->
@@ -17,7 +32,16 @@
 	<!--</form>-->
 
 	<div id="container">
-		<div id="list1" class="list"></div>
+		<div id="list1" class="list">
+			<div class="header"><h2>Na przedwczoraj</h2></div>
+		</div>
+		<div id="list2" class="list">
+			<div class="header"><h2>Na wczoraj</h2></div>
+		</div>
+		<div id="list3" class="list">
+			<div class="header"><h2>Na dzisiaj</h2></div>
+		</div>
+		<div style="clear: both;"></div>
 	</div>
 	<div id="modal">
 		<h1>Czy na pewno chcesz usunąć element?</h1>

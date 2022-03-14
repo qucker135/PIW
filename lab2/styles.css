@@ -9,6 +9,9 @@ input{
 button{
 	color: black;
 }
+select{
+	color: black;
+}
 
 #modal{
 	display: none;
@@ -22,7 +25,8 @@ button{
 }
 
 .list{
-	width: 10%;
+	width: 25%;
+	float: left;
 }
 
 .nongreyed{
