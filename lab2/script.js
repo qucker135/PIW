@@ -57,7 +57,7 @@ function dodajZadanie(){
 
 		$(divNewPosition).append(
 			$('<button>', {
-			}).html('x').click(() => {
+			}).html('x').addClass('btn-small btn-danger').click(() => {
 				//te dwie linijki w jquery!!!
 				//nie kopiują się listenery!!!
 				//trash = divNewPosition.cloneNode(true);

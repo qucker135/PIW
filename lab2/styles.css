@@ -3,6 +3,13 @@ body{
 	color: white;
 }
 
+input{
+	color: black;
+}
+button{
+	color: black;
+}
+
 #modal{
 	display: none;
 	z-index: 1;
