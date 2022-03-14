@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-	       <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
        <link rel="stylesheet" href="styles.css">  
        <script src="script.js"></script>
     </head>
@@ -15,7 +15,13 @@
 
 	<!--</form>-->
 
-	<div class="list" id="list1" onclick="console.log('Hello')">
+	<div id="container">
+		<div id="list1" class="list"></div>
+	</div>
+	<div id="modal">
+		<h1>Czy na pewno chcesz usunąć element?</h1>
+		<button>Tak</button>
+		<button>Nie</button>
 	</div>
     </body>
 </html>

@@ -3,7 +3,38 @@ body{
 	color: white;
 }
 
+#modal{
+	display: none;
+	z-index: 1;
+	position: fixed;
+	background-color: #888;	
+	width: 50%;
+	height: 50%;
+	top: 25%;
+	left: 25%;
+}
+
+.list{
+	width: 10%;
+}
+
+.nongreyed{
+	cursor: pointer;
+}
+.nongreyed:hover{
+	color: yellow;
+}
+
 .greyed{
 	text-decoration: line-through;
 	color: grey;
+}
+
+/*unused*/
+.nonvisible{
+	display: none;
+}
+/*unused*/
+.visible{
+	display: block;
 }
