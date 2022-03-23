@@ -41,11 +41,3 @@ select{
 	color: grey;
 }
 
-/*unused*/
-.nonvisible{
-	display: none;
-}
-/*unused*/
-.visible{
-	display: block;
-}

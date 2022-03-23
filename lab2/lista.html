@@ -7,29 +7,20 @@
        <script src="script.js"></script>
     </head>
     <body>
-    	<!--<form>-->
+    	<form>
             <label for="whichList">Wybierz listę:</label>
-	    <!--<input name="whichList" list="whichList">-->
             <select name="whichList" id="whichList">
               <option value="1">Na przedwczoraj</option>
               <option value="2">Na wczoraj</option>
               <option value="3">Na dzisiaj</option>
             </select>	
-            <!--
-            <datalist id="whichList">
-              <option value="Na przedwczoraj">
-              <option value="Na wczoraj">
-              <option value="Na dzisiaj">
-            </datalist>
-            -->
 
-            <label for="zadanie">Wpisz zadanie:</label>
-            <input type="text" name="zadanie" id="zadanie" required />
-	    <!--<input type="submit" value="Zatwierdź" onclick="dodajZadanie()"/>-->
-	    <button onclick="dodajZadanie()" class="btn-primary">Zatwierdź</button>
-            <button onclick="przywroc()" class="btn-warning">Przywróć z kosza</button>
+            <label for="task">Wpisz zadanie:</label>
+            <input type="text" name="task" id="task" required />
+	    <button onclick="addTask()" class="btn-primary">Zatwierdź</button>
+            <button onclick="restore()" class="btn-warning">Przywróć z kosza</button>
 
-	<!--</form>-->
+	</form>
 
 	<div id="container">
 		<div id="list1" class="list">
@@ -50,7 +41,6 @@
 	</div>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     </body>
 </html>
