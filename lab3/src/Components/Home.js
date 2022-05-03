@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
+import {Link} from 'react-router-dom';
+import { ObserverContext, initState, reducer } from '../Contexts/ObserverContext';
 
 const Home = (props) => {
     const {setStudents, students} = props;
 
     const [studentsQuery, setStudentsQuery] = useState("");
     const [studentsValue, setStudentsValue] = useState("DESC");
+
+    const [state, dispatcher] = useReducer(reducer, initState);
 
     const handleQueryChange = (event) => {
         setStudentsQuery(event.target.value);
@@ -23,6 +27,8 @@ const Home = (props) => {
     .map((it, i)=>{ //bad practise: https://pl.reactjs.org/docs/lists-and-keys.html#keys
 
         return <div key={i}>
+            <div className="Home-photo"><Link to="/profile" state={{ from: i}}><img src={it.imgSrc} alt=""/></Link></div>
+            <button onClick={()=>dispatcher({type: "TOGGLE", payload: i})}>{state.observed.includes(i) ? state.captionOn : state.captionOff}</button>
             <div className="Home-name">{it.name}</div>
             <div className="Home-desc">Opis: {it.desc}</div>
             <div className="Home-tags-list">
@@ -51,7 +57,7 @@ const Home = (props) => {
     return ( //JSX
         <div>
             <p>Wyszukaj ogłoszenia innych</p>
-            <label for="whichList">Wyszukaj po:</label>
+            <label htmlFor="whichList">Wyszukaj po:</label>
             <select name="whichList" id="whichList" onChange={handleValueChange}>
               <option value="DESC">Opisie</option>
               <option value="TAGS">Tagach</option>

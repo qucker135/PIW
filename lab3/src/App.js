@@ -1,69 +1,29 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./Components/Home";
 import Add from "./Components/Add";
 import Group from "./Components/Group";
 import AddGroup from "./Components/AddGroup";
-import Second from "./Components/Second";
+import Profile from "./Components/Profile";
+import SignIn from './Components/SignIn';
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+import axios from 'axios';
+import SignInContext from './Contexts/SignInContext';
 
 function App() {
-  const [students, setStudents] = useState([
-    {
-      name: "Mikołaj Czerniak",
-      email: "mikolaj.czerniak@gmail.com",
-      desc: "Młody, dynamiczny student",
-      tags: ["c++", "verilog", "arduino", "php"],
-      subjects: ["AK2", "PIW", "PIPG"]
-    },
-    {
-      name: "Kulash Doomchuck",
-      email: "kulash.doomchuck@gmail.com",
-      desc: "Ekspert ds. budowy kompilatorów",
-      tags: ["c++", "vhdl", "java", "php"],
-      subjects: ["PIPG", "EAC", "ELE"]
-    },
-    {
-      name: "Pen Pineapple",
-      email: "apple.pen@gmail.com",
-      desc: "Ekspert ds. JVM",
-      tags: ["java", "kotlin", "groovy", "c#"],
-      subjects: ["PJ", "WF", "AK2"]
-    },
-  ]);
+  const [students, setStudents] = useState([]);
+  const [groups, setGroups] = useState([]);
 
-  const [groups, setGroups] = useState([
-    {
-      name: "Wesoła grupa",
-      members: ["Mikołaj Czerniak", "Kulash Doomchuck"],
-      desc: "Młody, dynamiczny zespół",
-      subject: "AK2"
-    },
-    {
-      name: "MŚ 2022 - grupa C",
-      members: ["Mikołaj Czerniak", "Pen Pineapple"],
-      desc: "Stary, statyczny zespół",
-      subject: "PIW"
-    },
-    {
-      name: "Grupa wzajemnej adoracji",
-      members: ["Kulash Doomchuck", "Mik Gużdżanowski"],
-      desc: "Dołącz do nas!",
-      subject: "PIPG"
-    },
-    {
-      name: "Drużyna A",
-      members: ["Pen Pineapple", "Mat Bartysiak"],
-      desc: "Szukamy kogoś takiego jak Ty!",
-      subject: "ELE"
-    },
-    {
-      name: "Załoga G",
-      members: ["Tys Marbatsiak", "Mikołaj Czerniak"],
-      desc: "A wise man once sed 's/sed/awk/g'",
-      subject: "SO2"
-    },
-  ]);
+  useEffect(() => {
+    axios.get('http://localhost:3000/APIs/students.json').then(res => {
+      setStudents(res.data);
+    });
+
+    axios.get('http://localhost:3000/APIs/groups.json').then(res => {
+      setGroups(res.data);
+    });
+  },[]);
+  
 
   return (
     <div className="App">
@@ -71,21 +31,26 @@ function App() {
         <h2>Tinder dla projektów &lt;3</h2>
       </header>
       <main>
+        <SignInContext.Provider value={useState("")}>
         <BrowserRouter>
         <nav>
-          <NavLink to="/">Home</NavLink><br/>
+          <NavLink to="/tinder">Home</NavLink><br/>
           <NavLink to="/add">Dodaj własne ogłoszenie</NavLink><br/>
           <NavLink to="/groups">Szukanie grup</NavLink><br/>
           <NavLink to="/add-group">Dodaj grupę</NavLink><br/>
+          <NavLink to="/signin">Zaloguj się</NavLink><br/>
         </nav>
-        
+                
         <Routes>
-          <Route path="/" element={<Home students={students} setStudents={setStudents} />}/>
+          <Route path="/tinder" element={<Home students={students} setStudents={setStudents} />}/>
           <Route path="/add" element={<Add students={students} setStudents={setStudents} />}/>
           <Route path="/groups" element={<Group groups={groups} setGroups={setGroups} />}/>
           <Route path="/add-group" element={<AddGroup groups={groups} setGroups={setGroups} />}/>
+          <Route path="/profile" element={<Profile students={students} setStudents={setStudents} />}/>
+          <Route path="/signin" element={<SignIn students={students} setStudents={setStudents} />}/>
         </Routes>
         </BrowserRouter>
+        </SignInContext.Provider>
       </main>
       <footer className="App-footer">&copy; qucker135</footer>
     </div>
