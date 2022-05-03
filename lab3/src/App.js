@@ -15,11 +15,11 @@ function App() {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/APIs/students.json').then(res => {
+    axios.get('https://raw.githubusercontent.com/qucker135/PIW/main/lab3/public/APIs/students.json').then(res => {
       setStudents(res.data);
     });
 
-    axios.get('http://localhost:3000/APIs/groups.json').then(res => {
+    axios.get('https://raw.githubusercontent.com/qucker135/PIW/main/lab3/public/APIs/groups.json').then(res => {
       setGroups(res.data);
     });
   },[]);

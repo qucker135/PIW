@@ -9,7 +9,7 @@ const Profile = (props) => {
     const [studentData, setStudentData] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/APIs/students.json').then(res=>{
+        axios.get('https://raw.githubusercontent.com/qucker135/PIW/main/lab3/public/APIs/students.json').then(res=>{
             console.log(res.data[location.state.from]);
             setStudentData(res.data[location.state.from]);
         })
