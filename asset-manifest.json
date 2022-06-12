@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/PIW/tinder/static/css/main.af4638a2.css",
-    "main.js": "/PIW/tinder/static/js/main.bb859991.js",
-    "static/js/787.eb8d15da.chunk.js": "/PIW/tinder/static/js/787.eb8d15da.chunk.js",
-    "index.html": "/PIW/tinder/index.html",
-    "main.af4638a2.css.map": "/PIW/tinder/static/css/main.af4638a2.css.map",
-    "main.bb859991.js.map": "/PIW/tinder/static/js/main.bb859991.js.map",
-    "787.eb8d15da.chunk.js.map": "/PIW/tinder/static/js/787.eb8d15da.chunk.js.map"
+    "main.css": "/tinder/static/css/main.af4638a2.css",
+    "main.js": "/tinder/static/js/main.57488138.js",
+    "static/js/787.eb8d15da.chunk.js": "/tinder/static/js/787.eb8d15da.chunk.js",
+    "index.html": "/tinder/index.html",
+    "main.af4638a2.css.map": "/tinder/static/css/main.af4638a2.css.map",
+    "main.57488138.js.map": "/tinder/static/js/main.57488138.js.map",
+    "787.eb8d15da.chunk.js.map": "/tinder/static/js/787.eb8d15da.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.af4638a2.css",
-    "static/js/main.bb859991.js"
+    "static/js/main.57488138.js"
   ]
 }

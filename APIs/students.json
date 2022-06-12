@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Mikołaj Czerniak",
+      "email": "mikolaj.czerniak@gmail.com",
+      "desc": "Młody, dynamiczny student",
+      "tags": ["c++", "verilog", "arduino", "php"],
+      "subjects": ["AK2", "PIW", "PIPG"],
+      "imgSrc": "https://picsum.photos/id/1/200"
+    },
+    {
+      "name": "Kulash Doomchuck",
+      "email": "kulash.doomchuck@gmail.com",
+      "desc": "Ekspert ds. budowy kompilatorów",
+      "tags": ["c++", "vhdl", "java", "php"],
+      "subjects": ["PIPG", "EAC", "ELE"],
+      "imgSrc": "https://picsum.photos/id/1005/200"
+    },
+    {
+      "name": "Pen Pineapple",
+      "email": "apple.pen@gmail.com",
+      "desc": "Ekspert ds. JVM",
+      "tags": ["java", "kotlin", "groovy", "c#"],
+      "subjects": ["PJ", "WF", "AK2"],
+      "imgSrc": "https://picsum.photos/id/1009/200"
+    }
+  ]
