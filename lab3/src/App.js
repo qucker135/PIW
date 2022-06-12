@@ -6,13 +6,20 @@ import Group from "./Components/Group";
 import AddGroup from "./Components/AddGroup";
 import Profile from "./Components/Profile";
 import SignIn from './Components/SignIn';
-import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+import {Routes, Route, NavLink, HashRouter} from 'react-router-dom';
 import axios from 'axios';
 import SignInContext from './Contexts/SignInContext';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import { auth } from './firebase/init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { logout } from './firebase/users';
 
 function App() {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
+
+  const [userInny] = useAuthState(auth);
 
   useEffect(() => {
     axios.get('https://raw.githubusercontent.com/qucker135/PIW/main/lab3/public/APIs/students.json').then(res => {
@@ -23,7 +30,6 @@ function App() {
       setGroups(res.data);
     });
   },[]);
-  
 
   return (
     <div className="App">
@@ -32,13 +38,18 @@ function App() {
       </header>
       <main>
         <SignInContext.Provider value={useState("")}>
-        <BrowserRouter>
+        <HashRouter>
         <nav>
           <NavLink to="/tinder">Home</NavLink><br/>
           <NavLink to="/add">Dodaj własne ogłoszenie</NavLink><br/>
           <NavLink to="/groups">Szukanie grup</NavLink><br/>
           <NavLink to="/add-group">Dodaj grupę</NavLink><br/>
           <NavLink to="/signin">Zaloguj się</NavLink><br/>
+          {
+            userInny
+            && <button onClick={logout} >Wyloguj się {userInny.displayName}</button>
+            || <><NavLink to="/login">Zaloguj się głupio</NavLink> </>
+            }
         </nav>
                 
         <Routes>
@@ -48,8 +59,10 @@ function App() {
           <Route path="/add-group" element={<AddGroup groups={groups} setGroups={setGroups} />}/>
           <Route path="/profile" element={<Profile students={students} setStudents={setStudents} />}/>
           <Route path="/signin" element={<SignIn students={students} setStudents={setStudents} />}/>
+          <Route path="/login" element={<Login students={students} setStudents={setStudents} />}/>
+          <Route path="/register" element={<Register students={students} setStudents={setStudents} />}/>
         </Routes>
-        </BrowserRouter>
+        </HashRouter>
         </SignInContext.Provider>
       </main>
       <footer className="App-footer">&copy; qucker135</footer>
